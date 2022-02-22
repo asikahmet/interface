@@ -1,5 +1,9 @@
+--- 
+author: ""
+date: ""
+--- 
+---
 # Welcome
-
 
 We will try to understand interface more.
 
@@ -13,6 +17,8 @@ We will try to understand interface more.
 # What is it?
 
 An interface is two things: it is a set of methods, but it is also a type.
+
+The `interface{}` type is the interface that has no methods. Since there is no implements keyword, all types implement at least zero methods, and satisfying an interface is done automatically, all types satisfy the empty interface
 
 ## set of methods
 
@@ -56,10 +62,20 @@ type iface struct {
     data unsafe.Pointer
 }
 
+type eface struct {
+    _type *_type
+    data  unsafe.Pointer
+}
 ```
 
+
+![iface](iface.png)
+
+* Go unsafe pointers are much like C pointers.
 * `tab` holds the address of an `itab` object, which embeds the datastructures that describe both the type of the interface as well as the type of the data it points to.
 * `data` is a raw (i.e. `unsafe`) pointer to the value held by the interface.
+
+## unsafe pointer
 
 ---
 
@@ -71,6 +87,7 @@ type iface struct {
 - https://medium.com/a-journey-with-go/go-understand-the-empty-interface-2d9fc1e5ec72
 - https://research.swtch.com/interfaces
 - https://go101.org/article/unsafe.html
+- https://github.com/golang/go/blob/master/src/runtime/runtime2.go
 
 ## slide tool
 - https://github.com/maaslalani/slides
