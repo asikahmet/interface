@@ -5,7 +5,6 @@ We will try to understand interface more.
 
 - What is it?
 - How does it work?
-- What is compile time representation?
 - Where can we use it?
 - What should we pay attention to when using?
 
@@ -22,7 +21,6 @@ An interface is two things: it is a set of methods, but it is also a type.
 type Animal interface {
     Speak() string
 }
-
 
 type Dog struct {
 }
@@ -47,6 +45,21 @@ func DoSomething(v interface{}) {
    // ...
 }
 ```
+---
+# How does it work?
+
+## representation in runtime
+
+```go
+type iface struct {
+    tab  *itab
+    data unsafe.Pointer
+}
+
+```
+
+* `tab` holds the address of an `itab` object, which embeds the datastructures that describe both the type of the interface as well as the type of the data it points to.
+* `data` is a raw (i.e. `unsafe`) pointer to the value held by the interface.
 
 ---
 
@@ -57,6 +70,7 @@ func DoSomething(v interface{}) {
 - https://cmc.gitbook.io/go-internals/chapter-ii-interfaces
 - https://medium.com/a-journey-with-go/go-understand-the-empty-interface-2d9fc1e5ec72
 - https://research.swtch.com/interfaces
+- https://go101.org/article/unsafe.html
 
 ## slide tool
 - https://github.com/maaslalani/slides
