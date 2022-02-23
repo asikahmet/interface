@@ -115,7 +115,7 @@ func ValueOf(i interface{}) Value {
 ---
 # Benefits
 
-- we can do whatever we want?
+- we can do whatever we want.
 - You don't need to write repeated codes for each types
 
 ---
@@ -123,6 +123,13 @@ func ValueOf(i interface{}) Value {
 # Drawbacks
 - High computation
 - Bug, Panic possibility
+- Difficult to implement and Test
+
+---
+# Generics vs Reflection
+
+- Reflection provides more functionality.
+- Generics High level Reflection Low level solution
 
 ---
 # References
